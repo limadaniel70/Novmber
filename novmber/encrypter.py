@@ -31,6 +31,8 @@ from pathlib import Path
 
 class Encrypter:
 
+    key_pair: tuple[bytes, bytes]
+
     def __init__(self) -> None:
         pass
 
@@ -44,10 +46,10 @@ class Encrypter:
         pass
 
     def get_file_bytes(self, file: Path) -> bytes:
-        with file.open() as f:
+        with file.open("rb") as f:
             file_content = f.read()
 
-        return bytes(file_content, 'uft-8')
+        return file_content
     
     # def __enter__(self) -> None:
     #    pass
