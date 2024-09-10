@@ -26,31 +26,33 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import logging
 from pathlib import Path
+import rsa
+
+logger = logging.getLogger(__name__)
 
 
 class Encrypter:
 
-    key_pair: tuple[bytes, bytes]
-
-    def __init__(self) -> None:
-        pass
+    key_pair: tuple[rsa.PublicKey, rsa.PrivateKey]
 
     def gen_keys(self) -> None:
-        pass
+        logger.info("Creating key pair.")
+        self.key_pair = rsa.newkeys(4096, poolsize=8)
 
     def encrypt(self, bytes_to_encrypt: bytes) -> bytes:
-        pass
+        return rsa.encrypt(bytes_to_encrypt, self.key_pair[0])
 
-    def decrypt(self) -> bytes:
-        pass
+    def decrypt(self, encrypted_bytes: bytes, private_key: rsa.PrivateKey) -> bytes:
+        return rsa.decrypt(encrypted_bytes, private_key)
 
     def get_file_bytes(self, file: Path) -> bytes:
         with file.open("rb") as f:
             file_content = f.read()
 
         return file_content
-    
+
     # def __enter__(self) -> None:
     #    pass
     #
