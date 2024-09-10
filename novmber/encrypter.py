@@ -37,15 +37,18 @@ class Encrypter:
     def gen_keys(self) -> None:
         pass
 
-    def encrypt(self, file_bytes: bytes) -> bytes:
+    def encrypt(self, bytes_to_encrypt: bytes) -> bytes:
         pass
 
     def decrypt(self) -> bytes:
         pass
 
     def get_file_bytes(self, file: Path) -> bytes:
-        pass
+        with file.open() as f:
+            file_content = f.read()
 
+        return bytes(file_content, 'uft-8')
+    
     # def __enter__(self) -> None:
     #    pass
     #
