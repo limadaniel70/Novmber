@@ -44,8 +44,8 @@ class Encrypter:
     def encrypt(self, bytes_to_encrypt: bytes) -> bytes:
         return rsa.encrypt(bytes_to_encrypt, self.key_pair[0])
 
-    def decrypt(self, encrypted_bytes: bytes, private_key: rsa.PrivateKey) -> bytes:
-        return rsa.decrypt(encrypted_bytes, private_key)
+    # def decrypt(self, encrypted_bytes: bytes, private_key: rsa.PrivateKey) -> bytes:
+    #     return rsa.decrypt(encrypted_bytes, private_key)
 
     def get_file_bytes(self, file: Path) -> bytes:
         with file.open("rb") as f:
