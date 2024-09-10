@@ -31,7 +31,7 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-class FileUtils:
+class FileFinder:
 
     # fmt: off
     extensions: list[str] = [
@@ -78,7 +78,7 @@ class FileUtils:
 
 
 if __name__ == "__main__":
-    fileutils = FileUtils()
+    fileutils = FileFinder()
     fileutils.get_all_files(Path.cwd())
 
     with open("files.txt", "w") as f:
