@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 rsa = "^4.9"
+colorama = "^0.4.6"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.13.2"

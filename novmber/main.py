@@ -28,16 +28,28 @@
 
 import logging
 from pathlib import Path
+from colorama import Fore, Style, init as colorama_init
 
-from encrypter import Encrypter
+
+# from encrypter import Encrypter
 from file_finder import FileFinder
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
+    filename="log.txt",
+    filemode='at'
+)
+
+colorama_init()
 
 finder = FileFinder()
 
+print("[*] Searching files... ")
 finder.get_all_files(Path.home())
-
-enc = Encrypter()
-
-
+print(f"{Fore.GREEN}[*] Found {len(finder.files)} files. {Style.RESET_ALL}")
+print("##########################################")
+for file in finder.files:
+    print(f"{Fore.YELLOW}[*] Encrypting {file.name} {Style.RESET_ALL}")
+    
+# enc = Encrypter()
