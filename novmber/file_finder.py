@@ -64,10 +64,10 @@ class FileFinder:
         """
         try:
             for item in path.iterdir():
-                if item.is_file() and item.suffix in self.extensions:
-                    self.files.append(item)
-                else:
+                if not item.is_file():
                     self.get_all_files(item)
+                if item.suffix in self.extensions:
+                    self.files.append(item)
 
         except NotADirectoryError as e:
             logger.info(f"Skipping: current item is not a directory. {e}")
