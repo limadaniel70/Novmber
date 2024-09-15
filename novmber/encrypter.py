@@ -35,6 +35,8 @@ logger = logging.getLogger(__name__)
 
 class Encrypter:
 
+    # ? Should the project change from RSA to AES?
+
     key_pair: tuple[rsa.PublicKey, rsa.PrivateKey]
 
     def gen_keys(self) -> None:
